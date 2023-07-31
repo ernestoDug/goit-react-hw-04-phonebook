@@ -20,15 +20,16 @@ export class App extends Component {
   };
   // метод для передачі пропсом формі і зберігання з форми
   formLister = data => {
-    const addCopy = this.state.contacts.find(
-      // заборона додавання однакових імен
-      contact => contact.name.toLowerCase() === data.name.toLowerCase()
-    );
-    // console.log(addCopy, "copy")
-    if (addCopy) {
-      alert(`Уважніше,  ${data.name}  вже записана в контактах `);
-      return;
-    }
+    // const addCopy = this.state.contacts.find(
+    //   // заборона додавання однакових імен
+    //   // contact => contact.name.toLowerCase() === data.name.toLowerCase()
+    // );
+    // // console.log(addCopy, "copy")
+    // if (addCopy) {
+    //   alert(`Уважніше,  ${data.name}  вже записана в контактах `);
+    //   return;
+    // }
+    console.log(data)
     // оновлення списку доданих контактів після сабміту
     this.setState(prevState => {
       return {
