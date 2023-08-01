@@ -1,5 +1,5 @@
 // import { nanoid } from 'nanoid'
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { useState } from 'react';
 
@@ -31,13 +31,11 @@ export default function ContactForm({formProps}) {
    const  submiter = event => {
       event.preventDefault();
       // виклик методу з ап і передача йому стейту з форми для зберігання
-      // return
       formProps({name, number});
+      // очисники
       setName('');
       setNumber('');
      
-      // очисник
-
     };
     // очисник
   
@@ -85,8 +83,8 @@ export default function ContactForm({formProps}) {
   );
 }
 
-// // // прототайпи
-// ContactForm.propTypes = {
-//   number: PropTypes.number,
-//   name: PropTypes.string,
-// };
+// // прототайпи
+ContactForm.propTypes = {
+  number: PropTypes.number,
+  name: PropTypes.string,
+};
