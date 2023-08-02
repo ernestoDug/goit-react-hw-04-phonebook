@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
+import { ToastContainer } from 'react-toastify';
+
+// npm i react-toastify
+
+import { toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import css from './ContactForm/ContactForm.module.css';
 
@@ -28,7 +36,7 @@ export default function App() {
       contact => contact.name.toLowerCase() === data.name.toLowerCase()
     );
     if (addCopy) {
-      alert(`Уважніше,  ${data.name}  вже Є в конТАКтах `);
+         toast.warn(`👻 Уважніше,  ${data.name}  вже Є в конТАКтах 👻`);
       return;
     }
     // оновлення списку доданих контактів після сабміту
@@ -60,6 +68,18 @@ export default function App() {
 
   return (
     <div className={css.forms}>
+       <ToastContainer
+          position="top-center"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
       <h1>Телефонна книга</h1>
       <ContactForm
         // пропс метод  зберігання з форми
