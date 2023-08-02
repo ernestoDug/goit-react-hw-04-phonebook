@@ -6,10 +6,10 @@ import { useState } from 'react';
 import css from './ContactForm.module.css';
 
 // форма
-export default function ContactForm({formProps}) {
+export default function ContactForm({ formProps }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-// обранник
+  // обранник
   const changer = event => {
     const { name, value } = event.target;
     switch (name) {
@@ -26,23 +26,18 @@ export default function ContactForm({formProps}) {
         return;
     }
   };
-
-    // відправник
-   const  submiter = event => {
-      event.preventDefault();
-      // виклик методу з ап і передача йому стейту з форми для зберігання
-      formProps({name, number});
-      // очисники
-      setName('');
-      setNumber('');
-     
-    };
-    // очисник
-  
+  // відправник
+  const submiter = event => {
+    event.preventDefault();
+    // виклик методу з ап
+    formProps({ name, number });
+    // очисники
+    setName('');
+    setNumber('');
+  };
 
   return (
-    <form
-      onSubmit={submiter} className={css.formsWr}>
+    <form onSubmit={submiter} className={css.formsWr}>
       <label className={css.label}>
         Ім'я
         <input

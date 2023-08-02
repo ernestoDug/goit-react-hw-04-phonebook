@@ -5,7 +5,7 @@ import css from './Filter.module.css';
 const Filter = ({ filterProp }) => {
   return (
     <>
-      <input 
+      <input
         name="filter"
         className={css.filter}
         type="text"
