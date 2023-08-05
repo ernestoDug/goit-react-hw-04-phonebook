@@ -1,17 +1,19 @@
 // import { nanoid } from 'nanoid';
-
 import PropTypes from 'prop-types';
-
+import { useContext } from 'react';
 import css from './ContactItem.module.css';
 
-const ContactItem = ({ name, number, id, deliter }) => {
+import { Context } from 'components/App';
+
+const ContactItem = ({ name, number, id }) => {
+  const context = useContext(Context);
   return (
     <li className={css.listContItem}>
       {name}: {number}
       <button
         className={css.listContDell}
         onClick={() => {
-          deliter(id);
+          context.deliter(id);
         }}
       >
         <span className={css.listContDellX}>Х</span>
