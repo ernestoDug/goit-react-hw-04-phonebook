@@ -1,13 +1,12 @@
-// import PropTypes from 'prop-types';
+// import { nanoid } from 'nanoid'
+import PropTypes from 'prop-types';
+
 import { useState } from 'react';
-import { useContext } from 'react';
+
 import css from './ContactForm.module.css';
 
-import { Context } from 'components/App';
-
-export default function ContactForm() {
-  const context = useContext(Context);
-
+// форма
+export default function ContactForm({ formProps }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   // обранник універсальний
@@ -20,6 +19,7 @@ export default function ContactForm() {
       }
       case 'number': {
         setNumber(value);
+
         break;
       }
       default:
@@ -30,7 +30,7 @@ export default function ContactForm() {
   const submiter = event => {
     event.preventDefault();
     // виклик методу з ап
-    context.formProps({ name, number });
+    formProps({ name, number });
     // очисники
     setName('');
     setNumber('');
@@ -79,7 +79,7 @@ export default function ContactForm() {
 }
 
 // // прототайпи
-// ContactForm.propTypes = {
-//   number: PropTypes.number,
-//   name: PropTypes.string,
-// };
+ContactForm.propTypes = {
+  number: PropTypes.number,
+  name: PropTypes.string,
+};
