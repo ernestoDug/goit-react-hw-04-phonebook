@@ -21,7 +21,6 @@ const begincontact = [
 export default function App() {
   const [contacts, setContacts] = useLocSt('contacts', begincontact);
   const [filterCon, setFilterCon] = useState('');
-  const [filtrat, setFiltrat] = useState([]);
 
   //   пропс формі і зберігання з форми
   const formLister = data => {
@@ -30,8 +29,8 @@ export default function App() {
       contact => contact.name.toLowerCase() === data.name.toLowerCase()
     );
     if (addCopy) {
-         toast.warn(`👻 Уважніше,  ${data.name}  вже Є в конТАКтах 👻`);
-      return;
+      toast.warn(`👻 Уважніше,  ${data.name}  вже Є в конТАКтах 👻`);
+      return; 
     }
     // оновлення списку доданих контактів після сабміту
     setContacts(contacts => [
@@ -45,37 +44,40 @@ export default function App() {
     const { value } = event.target;
     setFilterCon(value);
   };
-
   // фільтрат
   useEffect(() => {
-    const fillT = contacts.filter(contact =>
+    const filtrat = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filterCon)
     );
-// запис до ст фильтру 
-    const filtratNew = setFiltrat(filtrat => fillT);
-    return () => filtratNew;
+    // запис до ст фильтру
+    // const filtratNew = setFiltrat(filtrat => fillT);
+    return () => filtrat;
   }, [filterCon.length, contacts, filterCon]);
+
+  const filtrat = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filterCon.toLowerCase())
+  );
+
   //  для видалення
   const deliter = id => {
     const goodBayContact = contacts.filter(contact => contact.id !== id);
     setContacts(contacts => goodBayContact);
   };
 
-
   return (
     <div className={css.forms}>
-       <ToastContainer
-          position="top-center"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="colored"
-        />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
       <h1>Телефонна книга</h1>
       <ContactForm
         // пропс метод  зберігання з форми
