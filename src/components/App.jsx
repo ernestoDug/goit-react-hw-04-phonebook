@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { ToastContainer } from 'react-toastify';
 // npm i react-toastify
@@ -30,7 +30,7 @@ export default function App() {
     );
     if (addCopy) {
       toast.warn(`👻 Уважніше,  ${data.name}  вже Є в конТАКтах 👻`);
-      return; 
+      return;
     }
     // оновлення списку доданих контактів після сабміту
     setContacts(contacts => [
@@ -45,15 +45,6 @@ export default function App() {
     setFilterCon(value);
   };
   // фільтрат
-  useEffect(() => {
-    const filtrat = contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filterCon)
-    );
-    // запис до ст фильтру
-    // const filtratNew = setFiltrat(filtrat => fillT);
-    return () => filtrat;
-  }, [filterCon.length, contacts, filterCon]);
-
   const filtrat = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filterCon.toLowerCase())
   );
